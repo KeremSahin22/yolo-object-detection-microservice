@@ -11,7 +11,7 @@ class ObjectDetector:
     def image_preprocess(self):
 
         col, row = (640, 640)
-        self.resized_image = self.image.resize((col, row), PIL.Image.ANTIALIAS)
+        self.resized_image = self.image.resize((col, row), PIL.Image.LANCZOS)
 
     def object_detect(self) -> List:
         self.image_preprocess()

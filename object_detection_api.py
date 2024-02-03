@@ -6,6 +6,7 @@ from warnings import filterwarnings, simplefilter
 import ssl
 
 import torch
+from ultralytics import YOLO
 from fastapi import FastAPI, Request, File, UploadFile
 from fastapi.responses import JSONResponse
 from PIL import Image
@@ -35,25 +36,34 @@ logger.addHandler(file_handler)
 
 app = FastAPI()
 
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
+model = YOLO() 
 
 
-@app.post("/object_detect")
-async def image_detect(request: Request,
+@app.post("/detect/{label}")
+async def image_detect(request: Request, label: str = None,
                        input_file: UploadFile = File(...)):
 
     if request.method == "POST":
-        json_result = []
         try:
 
             image = Image.open(BytesIO(await input_file.read()))
 
             ob = ObjectDetector(image, model)
-            json_results = ob.object_detect()
+            object_detect_result = ob.object_detect()
+            json_result = object_detect_result[0]
+            encoded_image = object_detect_result[1]
 
-            logger.info("detection results", json_result)
+            if label:
+                filtered_json_result = [item for item in json_result if item.get("name") == label]
+            else: 
+                filtered_json_result = json_result
 
-            return JSONResponse({"data": json_results,
+
+            logger.info("detection results", filtered_json_result)
+
+            return JSONResponse({"image": encoded_image,
+                                 "objects": filtered_json_result,
+                                 "count": len(filtered_json_result),
                                  "message": "object detected successfully",
                                  "errors": None},
                                 status_code=200)

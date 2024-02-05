@@ -1,9 +1,7 @@
-from typing import List
-import PIL
 import json
+import PIL
 from PIL import Image
 import base64
-import cv2
 from io import BytesIO
 class ObjectDetector:
 

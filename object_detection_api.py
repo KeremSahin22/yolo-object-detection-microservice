@@ -1,11 +1,9 @@
 import os
 import logging
 from io import BytesIO
-from typing import List
 from warnings import filterwarnings, simplefilter
 import ssl
 
-import torch
 from ultralytics import YOLO
 from fastapi import FastAPI, Request, File, UploadFile
 from fastapi.responses import JSONResponse
@@ -36,10 +34,11 @@ logger.addHandler(file_handler)
 
 app = FastAPI()
 
+model_path = os.getenv('MODEL_PATH', 'models/yolov8n.pt')
 model = YOLO() 
 
 
-@app.post("/detect/{label}")
+@app.post("/detect/")
 async def image_detect(request: Request, label: str = None,
                        input_file: UploadFile = File(...)):
 

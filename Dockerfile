@@ -1,9 +1,19 @@
-FROM python:3.9-slim-buster
+FROM ultralytics/ultralytics:8.1.9-python
 
 WORKDIR /app
 
-COPY . /app/
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+# Copy only necessary files for installing dependencies
+COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application
+COPY . .

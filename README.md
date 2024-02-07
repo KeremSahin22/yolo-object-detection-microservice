@@ -46,4 +46,4 @@ There are three easy ways to test out the microservice. To test manually, you ca
 
 ### Test Script
 1. Run the server.
-2. Navigate to the GitHub Repo. You can directly run the script on your local from your IDE, and it will start sending requests to the server. However, if you want to run it inside the Docker Container, you can open a shell inside the container by running ``docker-compose exec web sh``` (Inside the GitHub Repo). Then, you can navigate to the test folder with ```cd test```. Lastly, when you enter the command ```python3 object_detection_api_test.py```, the script will be run inside the container.
+2. Navigate to the GitHub Repo. You can directly run the script on your local from your IDE, and it will start sending requests to the server. However, if you want to run it inside the Docker Container, you can open a shell inside the container by running ```docker-compose exec web sh``` (Inside the GitHub Repo). Then, you can navigate to the test folder with ```cd test```. Lastly, when you enter the command ```python3 object_detection_api_test.py```, the script will be run inside the container.

@@ -2,7 +2,7 @@
 This project provides a simple microservice for object detection, incorporating a pre-trained YOLOV8 Model and a RESTful API created with FastAPI. 
 
 ## YOLOV8 ONNX Model
-The YOLOV8 model has been exported ONNX format and can be found under the "models" folder. ONNX models can be used to transition between different frameworks (PyTorch to Tensorflow), and can be used with ONNX Runtime for cross-platform acceleration. The following Python Script was used to export the ONNX model:
+The YOLOV8 model has been exported ONNX format and can be found under the "ml_models" folder. ONNX models can be used to transition between different frameworks (PyTorch to Tensorflow), and can be used with ONNX Runtime for cross-platform acceleration. The following Python Script was used to export the ONNX model:
 
 ```
 from ultralytics import YOLO

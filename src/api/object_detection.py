@@ -8,7 +8,7 @@ from ultralytics import YOLO
 from fastapi import FastAPI, Request, File, UploadFile
 from fastapi.responses import JSONResponse
 from PIL import Image
-from src.object_detector import ObjectDetector
+from src.service.object_detector import ObjectDetector
 
 filterwarnings("ignore")
 simplefilter(action='ignore', category=FutureWarning)
@@ -32,7 +32,7 @@ file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
 app = FastAPI()
-model = YOLO('./models/yolov8n.onnx', task="detect")
+model = YOLO('./ml_models/yolov8n.onnx', task="detect")
 
 @app.post("/detect/")
 async def image_detect(request: Request, label: str = None,

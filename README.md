@@ -47,3 +47,14 @@ There are three easy ways to test out the microservice. To test manually, you ca
 ### Test Script
 1. Run the server.
 2. Navigate to the GitHub Repo. You can directly run the script on your local from your IDE, and it will start sending requests to the server. However, if you want to run it inside the Docker Container, you can open a shell inside the container by running ```docker-compose exec web sh``` (Inside the GitHub Repo). Then, you can navigate to the test folder with ```cd test```. Lastly, when you enter the command ```python3 object_detection_api_test.py```, the script will be run inside the container.
+
+## Citations
+@software{yolov8_ultralytics,
+  author = {Glenn Jocher and Ayush Chaurasia and Jing Qiu},
+  title = {Ultralytics YOLOv8},
+  version = {8.0.0},
+  year = {2023},
+  url = {https://github.com/ultralytics/ultralytics},
+  orcid = {0000-0001-5950-6979, 0000-0002-7603-6750, 0000-0003-3783-7069},
+  license = {AGPL-3.0}
+}

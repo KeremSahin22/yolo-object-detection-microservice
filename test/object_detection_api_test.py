@@ -2,7 +2,6 @@ import requests
 import json
 import os
 
-# URL of the endpoint
 url = 'http://localhost:8000/detect/'
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -23,7 +22,6 @@ def get_response(image_path):
 
 # Iterate over the image paths and compare responses
 for i in range(5):
-    # Send request to the API
     api_response = get_response(image_paths[i])
     
     # Read the expected response from file

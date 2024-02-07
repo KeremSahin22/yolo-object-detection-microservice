@@ -34,21 +34,38 @@ logger.addHandler(file_handler)
 app = FastAPI()
 model = YOLO('./ml_models/yolov8n.onnx', task="detect")
 
+# Define API endpoint for object detection
 @app.post("/detect/")
 async def image_detect(request: Request, label: str = None,
                     input_file: UploadFile = File(...)):
+    """
+    API endpoint for performing object detection on an uploaded image.
+
+    Args:
+        request (Request): HTTP request object.
+        label (str): Optional label for filtering detection results.
+        input_file (UploadFile): Uploaded image file.
+
+    Returns:
+        JSONResponse: JSON response containing detection results.
+    """
     if request.method == "POST":
         try:
             image = Image.open(BytesIO(await input_file.read()))
             ob = ObjectDetector(image, model)
+
+            # Perform object detection
             object_detect_result = ob.object_detect()
             json_result = object_detect_result[0]
             encoded_image = object_detect_result[1]
+
+            # Filter detection results by label if provided
             if label:
                 filtered_json_result = [item for item in json_result if item.get("name") == label]
             else: 
                 filtered_json_result = json_result
             logger.info("Detection results: %s", filtered_json_result)
+
             return JSONResponse({"image": encoded_image,
                                 "objects": filtered_json_result,
                                 "count": len(filtered_json_result),

@@ -11,11 +11,20 @@ class ObjectDetector:
         self.model = model
 
     def image_preprocess(self):
+        """
+        Preprocess the input image by resizing it to a fixed size.
+        """
         col, row = (640, 640)
         self.resized_image = self.image.resize((col, row), PIL.Image.LANCZOS)
 
     #For single image detection
     def object_detect(self):
+        """
+        Perform object detection on the image.
+
+        Returns:
+            Tuple: A tuple containing JSON-formatted detection results and the base64 encoded image.
+        """
         self.image_preprocess()
         out = self.model(self.resized_image)
         json_result = out[0].tojson()

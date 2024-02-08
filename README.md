@@ -12,7 +12,7 @@ model.export(format='onnx')  # creates 'yolov8n.onnx'
 ```
 
 ## Docker 
-The project Dockerfile is based on the "ultralytics/ultralytics:8.1.9-python" image, which is an optimized minimal Python environment for lightweight YOLO applications. The produced Docker image is ~6GB due to NVIDIA base images. See https://github.com/ultralytics/yolov5/issues/5708 for discussion. The docker-compose.yaml file facilitates deploying a web service using Docker Compose. It defines a web service for running the Python web application and specifies the port mapping, volumne mounting for code changes.
+The project Dockerfile is based on the "ultralytics/ultralytics:8.1.9-python" image, which is an optimized minimal Python environment for lightweight YOLO applications. The produced Docker image is ~6GB due to NVIDIA base images. See https://github.com/ultralytics/yolov5/issues/5708 for discussion. The docker-compose.yaml file facilitates deploying a web service using Docker Compose. It defines a web service for running the Python web application and specifies the port mapping, volume mounting for code changes.
 
 ## Project Setup
 1. Clone the GitHub repository.
@@ -46,7 +46,7 @@ There are three easy ways to test out the microservice. To test manually, you ca
 
 ### Test Script
 1. Run the server.
-2. Navigate to the GitHub Repo. You can directly run the script on your local from your IDE, and it will start sending requests to the server. However, if you want to run it inside the Docker Container, you can open a shell inside the container by running ```docker-compose exec web sh``` (Inside the GitHub Repo). Then, you can navigate to the test folder with ```cd test```. Lastly, when you enter the command ```python3 object_detection_api_test.py```, the script will be run inside the container.
+2. Navigate to the GitHub Repo. You can directly run the script on your local from your IDE, and it will start sending requests to the server. However, if you want to run it inside the Docker Container, you can open a shell inside the container by running ```docker-compose exec web sh``` (Inside the GitHub Repo). Then, you can navigate to the test folder with ```cd test```. Lastly, when you enter the command ```python3 object_detection_api_test.py```, the script will be run inside the container. It will compare the results with the expected ones.
 
 ## Citations
 @software{yolov8_ultralytics,

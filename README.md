@@ -17,7 +17,7 @@ The project Dockerfile is based on the "ultralytics/ultralytics:8.1.9-python" im
 ## Project Setup
 1. Clone the GitHub repository.
 2. Make sure Docker is installed on your computer. Easiest way would be to install Docker Desktop: https://www.docker.com/products/docker-desktop/
-3. Navigate to the cloned GitHub Repository. After that, you can directly run ```docker compose up --build``` to build your image and run the web service. 
+3. Navigate to the cloned GitHub Repository. Make sure Docker is running and after that, you can directly run ```docker compose up --build``` command to build your image and run the web service. 
 4. After the image is built, the web service will run automatically. You can then interact with the REST API (see more on API Usage). 
 5. When you are done, you can close the server with ```CTRL+C```.
 6. After these steps, you can directly use the ```docker compose up``` command to run the server for future usage.

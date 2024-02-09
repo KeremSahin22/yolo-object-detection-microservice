@@ -32,7 +32,7 @@ There are three easy ways to test out the microservice. To test manually, you ca
 4. Enter the ```http://localhost:8000/detect/``` URL.
 5. Go to Body, and select the form-data. Write "input_file" for the key, and then select the type as "File". For the value, you can click on the "New file from local machine", and then navigate to the data/test_dataset/images folder. Select one of the images for testing.
 6. Click on the "Send" button, and you should receive the response in JSON format.
-7. Additionally, you can edit the URL with the label query parameter. As an example, you can write ```http://localhost:8000/detect/?label=spoon ``` and select the image "1.jpg". After you send the request, you should only see the spoon object being returned from the JSON response.
+7. Additionally, you can edit the URL with the label query parameter. As an example, you can write ```http://localhost:8000/detect/?label=spoon``` and select the image "1.jpg". After you send the request, you should only see the spoon object being returned from the JSON response.
 8. You can validate the outputs by comparing with the outputs inside the data/test_dataset/outputs files. The outputs were created without any "label" value.
 
 ### FastAPI Web Interface 
